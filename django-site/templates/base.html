@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Car Dealership{% endblock %}</title>
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; margin: 24px; }
+      header { display:flex; justify-content:space-between; align-items:center; }
+      nav a { margin:0 10px; text-decoration:none; color:#333; }
+      .dealer { border:1px solid #ddd; padding:10px; margin:10px 0; border-radius:6px; }
+      .btn { padding:6px 10px; border-radius:4px; text-decoration:none; border:1px solid #333; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="{% url 'home' %}" style="font-weight:bold;">CarDeal</a>
+      </div>
+      <nav>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        {% if user.is_authenticated %}
+          <span>Hi, {{ user.username }}</span>
+          <a class="btn" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+    </header>
+    <hr/>
+    {% block content %}{% endblock %}
+  </body>
+</html>

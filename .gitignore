@@ -1,0 +1,24 @@
+﻿# Node
+node_modules/
+**/node_modules/
+package-lock.json
+yarn.lock
+
+# Python venvs
+.venv/
+venv/
+env/
+*.venv
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+
+# others
+.env

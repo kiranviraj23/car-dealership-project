@@ -1,0 +1,22 @@
+﻿{% extends "base.html" %}
+{% block title %}Dealer - CarDeal{% endblock %}
+{% block content %}
+<h1>{{ dealer.name }}</h1>
+<p>{{ dealer.address }}, {{ dealer.city }}, {{ dealer.state }}</p>
+
+<h2>Reviews</h2>
+{% if reviews %}
+  {% for r in reviews %}
+    <div style="border:1px solid #eee; padding:8px; margin:6px 0;">
+      <strong>{{ r.user }}</strong> — Rating: {{ r.rating }} <br/>
+      <p>{{ r.review }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No reviews yet.</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+  <a class="btn" href="{% url 'add_review' dealer.id %}">Add Review</a>
+{% endif %}
+{% endblock %}
